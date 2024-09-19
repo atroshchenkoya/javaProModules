@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c72d628-7111-489d-aa54-1ecf1909dbc2" name="Changes" comment="init br for HW">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="9c72d628-7111-489d-aa54-1ecf1909dbc2" name="Changes" comment="testRunner finished">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReflecAnnoHW/README.MD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/TestClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/testRunner/TestRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/testRunner/testAnnotations/AfterSuite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/testRunner/testAnnotations/BeforeSuite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/testRunner/testAnnotations/Disabled.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/testRunner/testAnnotations/Exceptions/InvalidTestAnnotationUsageException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/testRunner/testAnnotations/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +27,14 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -27,19 +43,26 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 6
 }]]></component>
   <component name="ProjectId" id="2mHQBHc6nyRGzzgyiT8VRm23zVj" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "ReflecAnnoHW",
     "jdk.selected.JAVA_MODULE": "corretto-17",
@@ -59,7 +82,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1726730886114</updated>
-      <workItem from="1726730887121" duration="632000" />
+      <workItem from="1726730887121" duration="13493000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <option name="closed" value="true" />
@@ -85,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726731345233</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="init module for HW">
+      <option name="closed" value="true" />
+      <created>1726731602797</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726731602797</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,19 +146,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init project" />
     <MESSAGE value="init br for HW" />
-    <option name="LAST_COMMIT_MESSAGE" value="init br for HW" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ReflecAnnoHW/src/main/java/org/example/Main.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="init module for HW" />
+    <MESSAGE value="testRunner finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="testRunner finished" />
   </component>
 </project>
