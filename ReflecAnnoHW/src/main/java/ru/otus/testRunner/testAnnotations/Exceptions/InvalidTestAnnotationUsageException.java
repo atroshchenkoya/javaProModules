@@ -1,4 +1,4 @@
-package org.example.testRunner.testAnnotations.Exceptions;
+package ru.otus.testRunner.testAnnotations.Exceptions;
 
 public class InvalidTestAnnotationUsageException extends Exception {
     public InvalidTestAnnotationUsageException(String message) {

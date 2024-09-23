@@ -1,10 +1,10 @@
-package org.example.testRunner;
+package ru.otus.testRunner;
 
-import org.example.TestClass;
-import org.example.testRunner.testAnnotations.AfterSuite;
-import org.example.testRunner.testAnnotations.BeforeSuite;
-import org.example.testRunner.testAnnotations.Exceptions.InvalidTestAnnotationUsageException;
-import org.example.testRunner.testAnnotations.Test;
+import ru.otus.TestClass;
+import ru.otus.testRunner.testAnnotations.AfterSuite;
+import ru.otus.testRunner.testAnnotations.BeforeSuite;
+import ru.otus.testRunner.testAnnotations.Exceptions.InvalidTestAnnotationUsageException;
+import ru.otus.testRunner.testAnnotations.Test;
 
 import java.lang.reflect.Method;
 import java.util.*;

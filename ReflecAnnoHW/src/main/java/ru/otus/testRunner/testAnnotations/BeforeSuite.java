@@ -1,4 +1,4 @@
-package org.example.testRunner.testAnnotations;
+package ru.otus.testRunner.testAnnotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

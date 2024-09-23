@@ -1,8 +1,8 @@
-package org.example;
+package ru.otus;
 
-import org.example.testRunner.testAnnotations.AfterSuite;
-import org.example.testRunner.testAnnotations.BeforeSuite;
-import org.example.testRunner.testAnnotations.Test;
+import ru.otus.testRunner.testAnnotations.AfterSuite;
+import ru.otus.testRunner.testAnnotations.BeforeSuite;
+import ru.otus.testRunner.testAnnotations.Test;
 
 public class TestClass {
     public void test1() {
