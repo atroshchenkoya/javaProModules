@@ -58,19 +58,11 @@ public class PaymentProcessorImplWithSpyTest {
         destinationAccount.setType(0);
         destinationAccount.setId(20L);
 
-        doReturn(List.of(sourceAccount)).when(accountService).getAccounts(argThat(new ArgumentMatcher<Agreement>() {
-            @Override
-            public boolean matches(Agreement argument) {
-                return argument != null && argument.getId() == 1L;
-            }
-        }));
+        doReturn(List.of(sourceAccount)).when(accountService)
+                .getAccounts(argThat(argument -> argument != null && argument.getId() == 1L));
 
-        doReturn(List.of(destinationAccount)).when(accountService).getAccounts(argThat(new ArgumentMatcher<Agreement>() {
-            @Override
-            public boolean matches(Agreement argument) {
-                return argument != null && argument.getId() == 2L;
-            }
-        }));
+        doReturn(List.of(destinationAccount)).when(accountService)
+                .getAccounts(argThat(argument -> argument != null && argument.getId() == 2L));
 
         when(accountDao.findById(10L)).thenReturn(Optional.of(sourceAccount));
         when(accountDao.findById(20L)).thenReturn(Optional.of(destinationAccount));

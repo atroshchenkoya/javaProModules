@@ -49,13 +49,21 @@ public class AccountServiceImplTest {
     public void testSourceNotFound() {
         when(accountDao.findById(any())).thenReturn(Optional.empty());
 
-        AccountException result = assertThrows(AccountException.class, new Executable() {
-            @Override
-            public void execute() throws Throwable {
-                accountServiceImpl.makeTransfer(1L, 2L, new BigDecimal(10));
-            }
-        });
+        AccountException result = assertThrows(AccountException.class,
+                () -> accountServiceImpl.makeTransfer(1L, 2L, new BigDecimal(10)));
         assertEquals("No source account", result.getLocalizedMessage());
+    }
+
+    @Test
+    void testCharge() {
+        Account sourceAccount = new Account();
+        sourceAccount.setAmount(new BigDecimal(100));
+        sourceAccount.setId(1L);
+
+        when(accountDao.findById(eq(1L))).thenReturn(Optional.of(sourceAccount));
+
+        accountServiceImpl.charge(1L, new BigDecimal(50));
+
     }
 
 
@@ -82,5 +90,5 @@ public class AccountServiceImplTest {
 
         verify(accountDao).save(argThat(sourceMatcher));
         verify(accountDao).save(argThat(destinationMatcher));
-        }
+    }
 }

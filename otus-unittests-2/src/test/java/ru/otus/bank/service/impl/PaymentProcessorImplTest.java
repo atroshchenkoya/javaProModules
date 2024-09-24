@@ -60,4 +60,31 @@ public class PaymentProcessorImplTest {
 
     }
 
+    @Test
+    public void testTransferWithComission() {
+        Agreement sourceAgreement = new Agreement();
+        sourceAgreement.setId(1L);
+
+        Agreement destinationAgreement = new Agreement();
+        destinationAgreement.setId(2L);
+
+        Account sourceAccount = new Account();
+        sourceAccount.setAmount(BigDecimal.TEN);
+        sourceAccount.setType(0);
+
+        Account destinationAccount = new Account();
+        destinationAccount.setAmount(BigDecimal.ZERO);
+        destinationAccount.setType(0);
+
+        when(accountService.getAccounts(argThat(argument -> argument != null && argument.getId() == 1L)))
+                .thenReturn(List.of(sourceAccount));
+
+        when(accountService.getAccounts(argThat(argument -> argument != null && argument.getId() == 2L)))
+                .thenReturn(List.of(destinationAccount));
+
+        paymentProcessor.makeTransferWithComission(sourceAgreement, destinationAgreement,
+                0, 0, BigDecimal.ONE, BigDecimal.ONE);
+
+    }
+
 }
