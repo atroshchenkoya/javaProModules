@@ -29,7 +29,7 @@ public class AccountServiceImplParametrizedTest {
 
     @ParameterizedTest
     @CsvSource({"100, 10, true", "10, 100, false", "10, 0, false", "10, -1, false"})
-    public void testTransferValidation(String sourceSum, String transferSum, String expectedResult) {
+    void testTransferValidation(String sourceSum, String transferSum, String expectedResult) {
         BigDecimal sourceAmount = new BigDecimal(sourceSum);
         BigDecimal transferAmount = new BigDecimal(transferSum);
         Boolean expected = Boolean.parseBoolean(expectedResult);
@@ -39,24 +39,7 @@ public class AccountServiceImplParametrizedTest {
         sourceAccount.setId(1L);
 
         Account destinationAccount = new Account();
-        destinationAccount.setAmount(new BigDecimal(10));
-        destinationAccount.setId(2L);
-
-        when(accountDao.findById(eq(1L))).thenReturn(Optional.of(sourceAccount));
-        when(accountDao.findById(eq(2L))).thenReturn(Optional.of(destinationAccount));
-
-        assertEquals(expected, accountServiceImpl.makeTransfer(1L, 2L, transferAmount));
-        }
-
-    @ParameterizedTest
-    @MethodSource("provideParameters")
-    public void testTransferValidationMethodSource(BigDecimal sourceAmount, BigDecimal transferAmount, Boolean expected) {
-        Account sourceAccount = new Account();
-        sourceAccount.setAmount(sourceAmount);
-        sourceAccount.setId(1L);
-
-        Account destinationAccount = new Account();
-        destinationAccount.setAmount(new BigDecimal(10));
+        destinationAccount.setAmount(BigDecimal.TEN);
         destinationAccount.setId(2L);
 
         when(accountDao.findById(eq(1L))).thenReturn(Optional.of(sourceAccount));
@@ -65,12 +48,29 @@ public class AccountServiceImplParametrizedTest {
         assertEquals(expected, accountServiceImpl.makeTransfer(1L, 2L, transferAmount));
     }
 
-    public static Stream<? extends Arguments> provideParameters() {
+    @ParameterizedTest
+    @MethodSource("provideParameters")
+    void testTransferValidationMethodSource(BigDecimal sourceAmount, BigDecimal transferAmount, Boolean expected) {
+        Account sourceAccount = new Account();
+        sourceAccount.setAmount(sourceAmount);
+        sourceAccount.setId(1L);
+
+        Account destinationAccount = new Account();
+        destinationAccount.setAmount(BigDecimal.TEN);
+        destinationAccount.setId(2L);
+
+        when(accountDao.findById(eq(1L))).thenReturn(Optional.of(sourceAccount));
+        when(accountDao.findById(eq(2L))).thenReturn(Optional.of(destinationAccount));
+
+        assertEquals(expected, accountServiceImpl.makeTransfer(1L, 2L, transferAmount));
+    }
+
+    static Stream<? extends Arguments> provideParameters() {
         return Stream.of(
-            Arguments.of(new BigDecimal(100), new BigDecimal(10), true),
-            Arguments.of(new BigDecimal(10), new BigDecimal(100), false),
-            Arguments.of(new BigDecimal(100), new BigDecimal(0), false),
-            Arguments.of(new BigDecimal(100), new BigDecimal(-1), false)
+            Arguments.of(BigDecimal.valueOf(100), BigDecimal.TEN, true),
+            Arguments.of(BigDecimal.TEN, BigDecimal.valueOf(100), false),
+            Arguments.of(BigDecimal.valueOf(100), BigDecimal.ZERO, false),
+            Arguments.of(BigDecimal.valueOf(100), BigDecimal.valueOf(-1), false)
         );
     }
 }

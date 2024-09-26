@@ -29,7 +29,7 @@ public class AccountServiceImplTest {
     AccountServiceImpl accountServiceImpl;
 
     @Test
-    public void testTransfer() {
+    void testTransfer() {
         Account sourceAccount = new Account();
         sourceAccount.setAmount(new BigDecimal(100));
 
@@ -46,7 +46,7 @@ public class AccountServiceImplTest {
     }
 
     @Test
-    public void testSourceNotFound() {
+    void testSourceNotFound() {
         when(accountDao.findById(any())).thenReturn(Optional.empty());
 
         AccountException result = assertThrows(AccountException.class,
@@ -68,25 +68,25 @@ public class AccountServiceImplTest {
 
 
     @Test
-    public void testTransferWithVerify() {
+    void testTransferWithVerify() {
         Account sourceAccount = new Account();
-        sourceAccount.setAmount(new BigDecimal(100));
+        sourceAccount.setAmount(BigDecimal.valueOf(100));
         sourceAccount.setId(1L);
 
         Account destinationAccount = new Account();
-        destinationAccount.setAmount(new BigDecimal(10));
+        destinationAccount.setAmount(BigDecimal.valueOf(10));
         destinationAccount.setId(2L);
 
-        when(accountDao.findById(eq(1L))).thenReturn(Optional.of(sourceAccount));
-        when(accountDao.findById(eq(2L))).thenReturn(Optional.of(destinationAccount));
+        when(accountDao.findById(1L)).thenReturn(Optional.of(sourceAccount));
+        when(accountDao.findById(2L)).thenReturn(Optional.of(destinationAccount));
 
         ArgumentMatcher<Account> sourceMatcher =
-                argument -> argument.getId().equals(1L) && argument.getAmount().equals(new BigDecimal(90));
+                argument -> argument.getId().equals(1L) && argument.getAmount().equals(BigDecimal.valueOf(90));
 
         ArgumentMatcher<Account> destinationMatcher =
-                argument -> argument.getId().equals(2L) && argument.getAmount().equals(new BigDecimal(20));
+                argument -> argument.getId().equals(2L) && argument.getAmount().equals(BigDecimal.valueOf(20));
 
-        accountServiceImpl.makeTransfer(1L, 2L, new BigDecimal(10));
+        accountServiceImpl.makeTransfer(1L, 2L, BigDecimal.valueOf(10));
 
         verify(accountDao).save(argThat(sourceMatcher));
         verify(accountDao).save(argThat(destinationMatcher));

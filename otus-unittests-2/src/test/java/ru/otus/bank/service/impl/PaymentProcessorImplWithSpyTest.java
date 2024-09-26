@@ -36,12 +36,12 @@ public class PaymentProcessorImplWithSpyTest {
     PaymentProcessorImpl paymentProcessor;
 
     @BeforeEach
-    public void init() {
+    void init() {
         paymentProcessor = new PaymentProcessorImpl(accountService);
     }
 
     @Test
-    public void testTransfer() {
+    void testTransfer() {
         Agreement sourceAgreement = new Agreement();
         sourceAgreement.setId(1L);
 
@@ -71,7 +71,7 @@ public class PaymentProcessorImplWithSpyTest {
         paymentProcessor.makeTransfer(sourceAgreement, destinationAgreement,
                 0, 0, BigDecimal.ONE);
 
-        assertEquals(new BigDecimal(9), sourceAccount.getAmount());
+        assertEquals(BigDecimal.valueOf(9), sourceAccount.getAmount());
         assertEquals(BigDecimal.ONE, destinationAccount.getAmount());
 
     }

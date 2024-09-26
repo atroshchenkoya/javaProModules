@@ -26,7 +26,7 @@ public class PaymentProcessorImplTest {
     PaymentProcessorImpl paymentProcessor;
 
     @Test
-    public void testTransfer() {
+    void testTransfer() {
         Agreement sourceAgreement = new Agreement();
         sourceAgreement.setId(1L);
 
@@ -61,7 +61,7 @@ public class PaymentProcessorImplTest {
     }
 
     @Test
-    public void testTransferWithComission() {
+    void testTransferWithComission() {
         Agreement sourceAgreement = new Agreement();
         sourceAgreement.setId(1L);
 

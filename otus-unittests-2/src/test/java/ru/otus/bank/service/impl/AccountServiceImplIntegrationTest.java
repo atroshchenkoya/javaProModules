@@ -24,18 +24,20 @@ public class AccountServiceImplIntegrationTest {
         account.setAgreementId(2L);
         account.setType(1);
         account.setNumber("3939393");
-        account.setAmount(new BigDecimal(100));
+        account.setAmount(BigDecimal.valueOf(100));
 
         Agreement agreement = new Agreement();
         agreement.setId(1L);
         agreement.setName("AAA");
 
         Agreement addedAgreement = agreementService.addAgreement("AAA");
-        Account addedAccount = accountService.addAccount(addedAgreement, "3939393", 1, new BigDecimal(100));
+        Account addedAccount = accountService
+                .addAccount(addedAgreement, "3939393", 1, BigDecimal.valueOf(100));
 
+        Assertions.assertTrue(agreementService.findByName("AAA").isPresent());
         Assertions.assertEquals("AAA", agreementService.findByName("AAA").get().getName());
-        Assertions.assertEquals(accountService.getAccounts(addedAgreement).get(0), addedAccount);
-        Assertions.assertEquals(accountService.getAccounts().size(), 1);
+        Assertions.assertEquals(addedAccount, accountService.getAccounts(addedAgreement).get(0));
+        Assertions.assertEquals(1, accountService.getAccounts().size());
         Assertions.assertNotNull(addedAccount.toString());
         Assertions.assertNotNull(addedAgreement.toString());
     }
