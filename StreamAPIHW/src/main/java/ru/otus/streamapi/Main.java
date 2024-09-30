@@ -1,4 +1,4 @@
-package ru.otus;
+package ru.otus.streamapi;
 
 import java.util.Comparator;
 import java.util.List;
@@ -27,7 +27,7 @@ public class Main {
 
     }
     public List<Task> getTask(TaskStatus taskStatus) {
-        return taskList.stream().filter(x -> x.getTaskStatus().equals(taskStatus)).toList();
+        return taskList.stream().filter(x -> x.getTaskStatus() == taskStatus).toList();
     }
     public boolean checkTaskExists(long id) {
         return taskList.stream().anyMatch(x -> x.getId() == id);
@@ -36,6 +36,6 @@ public class Main {
         return taskList.stream().sorted(Comparator.comparing(Task::getTaskStatus)).toList();
     }
     public long taskCount(TaskStatus taskStatus) {
-        return taskList.stream().filter(x -> x.getTaskStatus().equals(taskStatus)).count();
+        return taskList.stream().filter(x -> x.getTaskStatus() == taskStatus).count();
     }
 }
