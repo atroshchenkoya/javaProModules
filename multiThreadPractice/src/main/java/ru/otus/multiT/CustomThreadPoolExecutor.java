@@ -1,12 +1,11 @@
 package ru.otus.multiT;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.Executor;
 
 public class CustomThreadPoolExecutor implements Executor {
 
-    private final List<Runnable> taskList = new LinkedList<>();
+    private final LinkedList<Runnable> taskList = new LinkedList<>();
     private volatile boolean isRunning = true;
     private final Object monitor = new Object();
 
@@ -14,7 +13,8 @@ public class CustomThreadPoolExecutor implements Executor {
     public void execute(Runnable command) {
         if (isRunning) {
             synchronized (monitor) {
-                taskList.add(command);
+                taskList.addLast(command);
+                monitor.notifyAll();
             }
         } else {
             throw new IllegalStateException("Executor is not running");
@@ -23,6 +23,9 @@ public class CustomThreadPoolExecutor implements Executor {
 
     public void shutdown() {
         isRunning = false;
+        synchronized (monitor) {
+            monitor.notifyAll();
+        }
     }
 
     public CustomThreadPoolExecutor(int threadCount) {
@@ -39,6 +42,11 @@ public class CustomThreadPoolExecutor implements Executor {
                 Runnable nextTask;
                 synchronized (monitor) {
                     if (taskList.isEmpty()) {
+                        try {
+                            monitor.wait();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
                         continue;
                     }
                     nextTask = taskList.get(0);
