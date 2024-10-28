@@ -1,2 +1,4 @@
 rootProject.name = 'javaProModules'
+include 'patterns1'
+include 'patterns2'
 
